@@ -5,6 +5,8 @@
   <div>
     <h4 v-for="(product, idx) in products" :key="idx">{{ product }}</h4>
     <p>{{ price }}만원</p>
+    <button @click="increase">허위매물신고</button>
+    <span>신고수: {{ count }}</span>
   </div>
 </template>
 
@@ -15,10 +17,16 @@ export default {
   name: "App",
   data() {
     return {
+      count: 0,
       menus: ["Home", "Products", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
       price: 60,
     };
+  },
+  methods: {
+    increase() {
+      this.count++;
+    },
   },
 };
 </script>
