@@ -12,7 +12,7 @@
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
   <div v-for="(product, idx) in products" :key="idx">
-    <img src="./assets/room0.jpg" class="img" />
+    <img :src="images[idx]" class="img" />
     <h4 class="btn" @click="isModalOpen = true">{{ product }}</h4>
     <p>{{ price[idx] }}만원</p>
     <button @click="count[idx]++">허위매물신고</button>
@@ -33,9 +33,9 @@ export default {
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
       price: [60, 55, 65],
       images: [
-        "./assets/room0.jpg",
-        "./assets/room1.jpg",
-        "./assets/room2.jpg",
+        require("./assets/room0.jpg"),
+        require("./assets/room1.jpg"),
+        require("./assets/room2.jpg"),
       ],
     };
   },
@@ -90,6 +90,7 @@ div {
 }
 .img {
   margin-top: 20px;
+  width: 40vw;
 }
 .btn {
   cursor: pointer;
