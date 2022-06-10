@@ -3,10 +3,12 @@
     <div class="white-bg">
       <h4>
         {{ roomData[isClicked].title }}
-        <span class="btn">ⓧ</span>
+        <span class="btn" @click="$emit('closeModal')">ⓧ</span>
       </h4>
       <p>{{ roomData[isClicked].content }}</p>
-      <img :src="roomData[isClicked].image" class="img" />
+      <div><img :src="roomData[isClicked].image" class="img" /></div>
+      <input />
+      <p>{{ roomData[isClicked].price }}</p>
     </div>
   </div>
 </template>

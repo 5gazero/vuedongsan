@@ -1,5 +1,6 @@
 <template>
   <DetailModal
+    @closeModal="isModalOpen = false"
     :roomData="roomData"
     :isClicked="isClicked"
     :isModalOpen="isModalOpen"
@@ -8,7 +9,13 @@
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
   <DiscountBanner />
-  <Card :roomData="roomData" />
+  <Card
+    @openModal="
+      isModalOpen = true;
+      isClicked = $event;
+    "
+    :roomData="roomData"
+  />
 </template>
 
 <script>

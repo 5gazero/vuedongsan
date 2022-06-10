@@ -4,8 +4,7 @@
     <h4
       class="btn"
       @click="
-        isModalOpen = true;
-        isClicked = idx;
+        $emit('openModal', idx)
       "
     >
       {{ product.title }}
