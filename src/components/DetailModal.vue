@@ -7,8 +7,8 @@
       </h4>
       <p>{{ roomData[isClicked].content }}</p>
       <div><img :src="roomData[isClicked].image" class="img" /></div>
-      <input />
-      <p>{{ roomData[isClicked].price }}</p>
+      <input v-model="month" />
+      <p>{{ month }}개월 {{ roomData[isClicked].price * month }}</p>
     </div>
   </div>
 </template>
@@ -20,6 +20,11 @@ export default {
     isModalOpen: Boolean,
     roomData: Array,
     isClicked: Number,
+  },
+  data() {
+    return {
+      month: 1,
+    };
   },
 };
 </script>
