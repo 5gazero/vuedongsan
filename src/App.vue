@@ -2,24 +2,33 @@
   <div class="black-bg" v-if="isModalOpen">
     <div class="white-bg">
       <h4>
-        상세페이지 <span class="btn" @click="isModalOpen = false">X</span>
+        {{ roomData[isClicked].title }}
+        <span class="btn" @click="isModalOpen = false">X</span>
       </h4>
-      <p>설명</p>
+      <p>{{ roomData[isClicked].content }}</p>
     </div>
   </div>
   <div class="menu">
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
+  <DiscountBanner />
   <div v-for="(product, idx) in roomData" :key="idx">
     <img :src="product.image" class="img" />
-    <h2 class="btn" @click="isModalOpen = true">{{ product.title }}</h2>
-    <h4>{{ product.content }}</h4>
+    <h4
+      class="btn"
+      @click="
+        isModalOpen = true;
+        isClicked = idx;
+      "
+    >
+      {{ product.title }}
+    </h4>
     <p>월 {{ product.price }} 원</p>
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
+import DiscountBanner from "./components/DiscountBanner.vue";
 import data from "./assets/roomData.js";
 
 export default {
@@ -28,9 +37,13 @@ export default {
     return {
       roomData: data,
       isModalOpen: false,
+      isClicked: 0,
       count: [0, 0, 0],
       menus: ["Home", "Products", "About"],
     };
+  },
+  components: {
+    DiscountBanner,
   },
 };
 </script>
