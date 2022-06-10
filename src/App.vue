@@ -1,6 +1,5 @@
 <template>
   <div class="black-bg" v-if="isModalOpen">
-    // true일때만,
     <div class="white-bg">
       <h4>
         상세페이지 <span class="btn" @click="isModalOpen = false">X</span>
@@ -11,38 +10,27 @@
   <div class="menu">
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
-  <div v-for="(product, idx) in products" :key="idx">
-    <img :src="images[idx]" class="img" />
-    <h4 class="btn" @click="isModalOpen = true">{{ product }}</h4>
-    <p>{{ price[idx] }}만원</p>
-    <button @click="count[idx]++">허위매물신고</button>
-    <span>신고수: {{ count[idx] }}</span>
+  <div v-for="(product, idx) in roomData" :key="idx">
+    <img :src="product.image" class="img" />
+    <h2 class="btn" @click="isModalOpen = true">{{ product.title }}</h2>
+    <h4>{{ product.content }}</h4>
+    <p>월 {{ product.price }} 원</p>
   </div>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
+import data from "./assets/roomData.js";
 
 export default {
   name: "App",
   data() {
     return {
+      roomData: data,
       isModalOpen: false,
       count: [0, 0, 0],
       menus: ["Home", "Products", "About"],
-      products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
-      price: [60, 55, 65],
-      images: [
-        require("./assets/room0.jpg"),
-        require("./assets/room1.jpg"),
-        require("./assets/room2.jpg"),
-      ],
     };
-  },
-  methods: {
-    increase() {
-      this.count++;
-    },
   },
 };
 </script>
