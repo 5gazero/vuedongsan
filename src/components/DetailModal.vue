@@ -7,7 +7,7 @@
       </h4>
       <p>{{ roomData[isClicked].content }}</p>
       <div><img :src="roomData[isClicked].image" class="img" /></div>
-      <input v-model="month" />
+      <input v-model="month" placeholder="개월수를 입력해주세요" />
       <p>{{ month }}개월 {{ roomData[isClicked].price * month }}</p>
     </div>
   </div>
@@ -25,6 +25,17 @@ export default {
     return {
       month: 1,
     };
+  },
+  watch: {
+    month(input) {
+      if (input > 12) {
+        alert("12개월까지만 선택가능합니다.");
+        this.monthg = 1;
+      } else if (isNaN(input)) {
+        alert("숫자만 입력가능합니다.");
+        this.month = 1;
+      }
+    },
   },
 };
 </script>
