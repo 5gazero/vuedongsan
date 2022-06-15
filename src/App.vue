@@ -11,6 +11,8 @@
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
   <DiscountBanner />
+  <button @click="priceSort()">가격순 정렬</button>
+  <button @click="sortBack()">원래대로</button>
   <Card
     @openModal="
       isModalOpen = true;
@@ -30,7 +32,8 @@ export default {
   name: "App",
   data() {
     return {
-      roomData: data,
+      originRoomData: [...data],
+      roomData: [...data],
       isModalOpen: false,
       isClicked: 0,
       count: [0, 0, 0],
@@ -41,6 +44,14 @@ export default {
     DiscountBanner,
     DetailModal,
     Card,
+  },
+  methods: {
+    priceSort() {
+      this.roomData.sort((a, b) => a.price - b.price);
+    },
+    sortBack() {
+      this.roomData = [...this.originRoomData];
+    },
   },
 };
 </script>
