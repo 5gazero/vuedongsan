@@ -1,10 +1,12 @@
 <template>
-  <DetailModal
-    @closeModal="isModalOpen = false"
-    :roomData="roomData"
-    :isClicked="isClicked"
-    :isModalOpen="isModalOpen"
-  />
+  <div class="start" :class="{ end: isModalOpen }">
+    <DetailModal
+      @closeModal="isModalOpen = false"
+      :roomData="roomData"
+      :isClicked="isClicked"
+      :isModalOpen="isModalOpen"
+    />
+  </div>
   <div class="menu">
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
@@ -68,5 +70,13 @@ div {
   color: white;
   padding: 10px;
   font-weight: 600;
+}
+
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+.end {
+  opacity: 1;
 }
 </style>

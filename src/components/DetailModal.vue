@@ -30,7 +30,7 @@ export default {
     month(input) {
       if (input > 12) {
         alert("12개월까지만 선택가능합니다.");
-        this.monthg = 1;
+        this.month = 1;
       } else if (isNaN(input)) {
         alert("숫자만 입력가능합니다.");
         this.month = 1;
