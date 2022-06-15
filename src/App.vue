@@ -1,12 +1,12 @@
 <template>
-  <div class="start" :class="{ end: isModalOpen }">
+  <transition name="fade">
     <DetailModal
       @closeModal="isModalOpen = false"
       :roomData="roomData"
       :isClicked="isClicked"
       :isModalOpen="isModalOpen"
     />
-  </div>
+  </transition>
   <div class="menu">
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
@@ -72,11 +72,13 @@ div {
   font-weight: 600;
 }
 
-.start {
+.fade-enter-from {
   opacity: 0;
+}
+.fade-enter-active {
   transition: all 1s;
 }
-.end {
+.fade-enter-to {
   opacity: 1;
 }
 </style>
