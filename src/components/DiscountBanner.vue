@@ -1,10 +1,21 @@
 <template>
-  <div class="banner">지금 결제하면 20% 할인</div>
+  <div class="banner" v-if="showBanner">지금 결제하면 {{ discount }}% 할인</div>
 </template>
 
 <script>
 export default {
   name: "DiscountBanner",
+  data() {
+    return { showBanner: true, discount: 20 };
+  },
+  mounted() {
+    const count = setInterval(() => {
+      this.discount--;
+      if (this.discount < 1) {
+        clearInterval(count);
+      }
+    }, 1000);
+  },
 };
 </script>
 
