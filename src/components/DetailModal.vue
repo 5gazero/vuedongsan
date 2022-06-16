@@ -26,16 +26,19 @@ export default {
       month: 1,
     };
   },
-  watch: {
-    month(input) {
-      if (input > 12) {
-        alert("12개월까지만 선택가능합니다.");
-        this.month = 1;
-      } else if (isNaN(input)) {
-        alert("숫자만 입력가능합니다.");
-        this.month = 1;
-      }
-    },
+  // watch: {
+  //   month(input) {
+  //     if (input > 12) {
+  //       alert("12개월까지만 선택가능합니다.");
+  //       this.month = 1;
+  //     } else if (isNaN(input)) {
+  //       alert("숫자만 입력가능합니다.");
+  //       this.month = 1;
+  //     }
+  //   },
+  // },
+  beforeUpdate() {
+    if (this.month === '2') alert("3개월 이상부터 가능합니다.");
   },
 };
 </script>
