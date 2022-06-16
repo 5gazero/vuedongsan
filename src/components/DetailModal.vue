@@ -38,7 +38,10 @@ export default {
   //   },
   // },
   beforeUpdate() {
-    if (this.month === '2') alert("3개월 이상부터 가능합니다.");
+    if (this.month === "2") {
+      alert("3개월 이상부터 가능합니다.");
+      this.month = 1;
+    }
   },
 };
 </script>
