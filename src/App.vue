@@ -10,7 +10,7 @@
   <div class="menu">
     <a v-for="(menu, idx) in menus" :key="idx">{{ menu }}</a>
   </div>
-  <DiscountBanner />
+  <DiscountBanner v-if="showBanner" />
   <button @click="priceSort()">가격순 정렬</button>
   <button @click="sortBack()">원래대로</button>
   <Card
@@ -38,6 +38,7 @@ export default {
       isClicked: 0,
       count: [0, 0, 0],
       menus: ["Home", "Products", "About"],
+      showBanner: true,
     };
   },
   components: {
@@ -52,6 +53,11 @@ export default {
     sortBack() {
       this.roomData = [...this.originRoomData];
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showBanner = false;
+    }, 5000);
   },
 };
 </script>
@@ -75,7 +81,7 @@ div {
 .menu {
   background: yellowgreen;
   padding: 15px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 .menu a {
   color: white;
